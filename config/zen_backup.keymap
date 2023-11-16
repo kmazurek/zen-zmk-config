@@ -19,8 +19,8 @@
 
 #define DEF 0
 #define SYM 1
-#define NUM 3
 #define FN 2
+#define NUM 3
 #define SYS 4
 #define EMPTY 5
 
