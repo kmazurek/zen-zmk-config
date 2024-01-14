@@ -17,12 +17,13 @@
 
 #include "../zmk-nodefree-config/helper.h"
 
-#define DEF 0
+#define BASE 0
 #define SYM 1
 #define NUM 2
-#define FN 3
+#define FUN 3
 #define SYS 4
-#define EMPTY 5
+#define NO_HRM 5
+#define EMPTY 6
 
 #define XXX &none
 #define ___ &trans
@@ -81,7 +82,7 @@ ZMK_BEHAVIOR(smart_shft, mod_morph,
 /* Combos */
 #define COMBO_TERM_SLOW 30
 
-ZMK_COMBO(tog_no_hrm, &tog 5, LT5 RT5, ALL, COMBO_TERM_SLOW)
+ZMK_COMBO(tog_no_hrm, &tog NO_HRM, LT5 RT5, ALL, COMBO_TERM_SLOW)
 
 /* Keymap */
 
@@ -123,7 +124,7 @@ ZMK_LAYER(num,
 //                                           ╰─────────────┴─────────────┴─────────────╯  ╰─────────────┴─────────────┴─────────────╯
 )
 
-ZMK_LAYER(fn,
+ZMK_LAYER(fun,
 // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮  ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
      &kp F1        &kp F2        &kp F3        &kp F4        &kp F5        &kp F6           &kp F7        &kp F8        &kp F9        &kp F10       &kp F11       &kp F12
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
