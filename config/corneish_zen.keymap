@@ -115,7 +115,7 @@ ZMK_COMBO(minus, &kp MINUS,     RT3 RM3,     BASE, COMBO_TERM_SLOW)
 ZMK_COMBO(plus,  &kp PLUS,      RT4 RM4,     BASE, COMBO_TERM_SLOW)
 
 /* Horizontal combos - left hand */
-ZMK_COMBO(esc,   HRC_ESC,       RM1 RM2,     BASE, COMBO_TERM_SLOW)
+ZMK_COMBO(esc,   HRC_ESC,       LM2 RM1,     BASE, COMBO_TERM_SLOW)
 
 /* Horizontal combos - right hand */
 ZMK_COMBO(tab,   HRC_TAB,       RM1 RM2,     BASE, COMBO_TERM_SLOW)
