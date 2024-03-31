@@ -123,6 +123,9 @@ ZMK_COMBO(tab,   HRC_TAB,       RM1 RM2,     BASE, COMBO_TERM_SLOW)
 #define HRC_SQT &hmr LS(LCTRL) SQT
 ZMK_COMBO(sqt,   HRC_SQT,       RM3 RM4,     BASE, COMBO_TERM_SLOW)
 
+ZMK_COMBO(bslh,   &kp BSLH,      RB3 RB4,     BASE, COMBO_TERM_SLOW)
+ZMK_COMBO(grave,  &kp GRAVE,     RT3 RT4,     BASE, COMBO_TERM_SLOW)
+
 /* Keymap */
 
 // ZMK_CONDITIONAL_LAYER(SYM NUM, SYS)  // SYM + NUM --> SYS
