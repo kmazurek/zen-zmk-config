@@ -97,7 +97,7 @@ ZMK_BEHAVIOR(smart_shft, mod_morph,
 
 /* Combos */
 #define COMBO_TERM_SLOW 30
-#define COMBO_TERM_FAST 15
+#define COMBO_TERM_FAST 25
 
 ZMK_COMBO(tog_no_hrm, &tog NO_HRM, LT5 RT5, ALL, COMBO_TERM_SLOW)
 ZMK_COMBO(tog_fun, &tog FUN, LH1 RH1, ALL, COMBO_TERM_SLOW)
