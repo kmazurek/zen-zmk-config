@@ -81,8 +81,8 @@ ZMK_BEHAVIOR(tht, hold_tap,
     bindings = <&sl>, <&kp>;
 )
 
-#define tht_space &tht NOTHING SPACE
-#define tht_enter &tht NOTHING ENTER
+#define tht_space &tht SYM SPACE
+#define tht_enter &tht NUM ENTER
 
 /* Smart shift */
 
