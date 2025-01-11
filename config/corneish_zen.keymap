@@ -109,12 +109,20 @@ ZMK_COMBO(hash,  &kp HASH,      LT2 LM2,     BASE, COMBO_TERM_SLOW)
 ZMK_COMBO(dllr,  &kp DLLR,      LT1 LM1,     BASE, COMBO_TERM_SLOW)
 ZMK_COMBO(prcnt, &kp PRCNT,     LT0 LM0,     BASE, COMBO_TERM_SLOW)
 
+ZMK_COMBO(lpar,  &kp LPAR,      LM1 LB1,     BASE, COMBO_TERM_SLOW)
+ZMK_COMBO(lbkt,  &kp LBKT,      LM2 LB2,     BASE, COMBO_TERM_SLOW)
+ZMK_COMBO(lbrc,  &kp LBRC,      LM3 LB3,     BASE, COMBO_TERM_SLOW)
+
 /* Vertical combos - right hand */
 ZMK_COMBO(caret, &kp CARET,     RT0 RM0,     BASE, COMBO_TERM_SLOW)
 ZMK_COMBO(amps,  &kp AMPS,      RT1 RM1,     BASE, COMBO_TERM_SLOW)
 ZMK_COMBO(astrk, &kp ASTRK,     RT2 RM2,     BASE, COMBO_TERM_SLOW)
 ZMK_COMBO(minus, &kp MINUS,     RT3 RM3,     BASE, COMBO_TERM_SLOW)
 ZMK_COMBO(plus,  &kp PLUS,      RT4 RM4,     BASE, COMBO_TERM_SLOW)
+
+ZMK_COMBO(rpar,  &kp RPAR,      RM1 RB1,     BASE, COMBO_TERM_SLOW)
+ZMK_COMBO(rbkt,  &kp RBKT,      RM2 RB2,     BASE, COMBO_TERM_SLOW)
+ZMK_COMBO(rbrc,  &kp RBRC,      RM3 RB3,     BASE, COMBO_TERM_SLOW)
 
 /* Horizontal combos - left hand */
 #define HRC_ESC &hml LA(LGUI) ESC
