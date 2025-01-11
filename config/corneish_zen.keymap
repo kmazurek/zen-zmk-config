@@ -126,10 +126,10 @@ ZMK_COMBO(rbkt,  &kp RBKT,      RM2 RB2,     BASE, COMBO_TERM_SLOW)
 ZMK_COMBO(rbrc,  &kp RBRC,      RM3 RB3,     BASE, COMBO_TERM_SLOW)
 
 /* Horizontal combos - left hand */
-#define HRC_ESC &hml LA(LGUI) ESC
+#define HRC_ESC   &hml LA(LGUI) ESC
 ZMK_COMBO(esc,   HRC_ESC,       LM2 LM1,     BASE, COMBO_TERM_FAST)
-#define HRC_BSPC &hmr LS(LGUI) BSPC
-ZMK_COMBO(bspc,   HRC_BSPC,     LM3 LM2,     BASE, COMBO_TERM_FAST)
+#define HRC_MINUS &hml LS(LGUI) MINUS
+ZMK_COMBO(minus,   HRC_MINUS,     LM3 LM2,     BASE, COMBO_TERM_FAST)
 
 /* Horizontal combos - right hand */
 #define HRC_TAB &hmr LA(LGUI) TAB
