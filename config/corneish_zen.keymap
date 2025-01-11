@@ -23,7 +23,8 @@
 #define FUN 3
 #define SYS 4
 #define NO_HRM 5
-#define EMPTY 6
+#define TRANSPARENT 6
+#define NOTHING 7
 
 #define XXX &none
 #define ___ &trans
@@ -70,6 +71,21 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS)  // right-hand HRMs
 //MAKE_HRM(hmr_lpar_lt, &kp, &lpar_lt, KEYS_L THUMBS)    // "    "   "   "
 //MAKE_HRM(hmr_rpar_gt, &kp, &rpar_gt, KEYS_L THUMBS)    // "    "   "   "
 
+/* Thumbs hold-tap */
+// tap: key press | hold: switch layer
+ZMK_BEHAVIOR(tht, hold_tap,
+    flavor = "balanced";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <QUICK_TAP_MS>;
+    require-prior-idle-ms = <100>;
+    bindings = <&sl>, <&kp>;
+)
+
+#define tht_space &tht SYM SPACE
+#define tht_enter &tht NUM ENTER
+
+/* Smart shift */
+
 // tap: sticky-shift | shift + tap/ double-tap: caps-word | hold: shift
 ZMK_BEHAVIOR(smart_shft, mod_morph,
     bindings = <&sk LSHFT>, <&caps_word>;
@@ -81,9 +97,47 @@ ZMK_BEHAVIOR(smart_shft, mod_morph,
 
 /* Combos */
 #define COMBO_TERM_SLOW 30
+#define COMBO_TERM_FAST 25
 
 ZMK_COMBO(tog_no_hrm, &tog NO_HRM, LT5 RT5, ALL, COMBO_TERM_SLOW)
 ZMK_COMBO(tog_fun, &tog FUN, LH1 RH1, ALL, COMBO_TERM_SLOW)
+
+/* Vertical combos - left hand */
+ZMK_COMBO(excl,  &kp EXCL,      LT4 LM4,     BASE, COMBO_TERM_SLOW)
+ZMK_COMBO(at,    &kp AT,        LT3 LM3,     BASE, COMBO_TERM_SLOW)
+ZMK_COMBO(hash,  &kp HASH,      LT2 LM2,     BASE, COMBO_TERM_SLOW)
+ZMK_COMBO(dllr,  &kp DLLR,      LT1 LM1,     BASE, COMBO_TERM_SLOW)
+ZMK_COMBO(prcnt, &kp PRCNT,     LT0 LM0,     BASE, COMBO_TERM_SLOW)
+
+ZMK_COMBO(lpar,  &kp LPAR,      LM1 LB1,     BASE, COMBO_TERM_SLOW)
+ZMK_COMBO(lbkt,  &kp LBKT,      LM2 LB2,     BASE, COMBO_TERM_SLOW)
+ZMK_COMBO(lbrc,  &kp LBRC,      LM3 LB3,     BASE, COMBO_TERM_SLOW)
+
+/* Vertical combos - right hand */
+ZMK_COMBO(caret, &kp CARET,     RT0 RM0,     BASE, COMBO_TERM_SLOW)
+ZMK_COMBO(amps,  &kp AMPS,      RT1 RM1,     BASE, COMBO_TERM_SLOW)
+ZMK_COMBO(astrk, &kp ASTRK,     RT2 RM2,     BASE, COMBO_TERM_SLOW)
+ZMK_COMBO(minus, &kp MINUS,     RT3 RM3,     BASE, COMBO_TERM_SLOW)
+ZMK_COMBO(plus,  &kp PLUS,      RT4 RM4,     BASE, COMBO_TERM_SLOW)
+
+ZMK_COMBO(rpar,  &kp RPAR,      RM1 RB1,     BASE, COMBO_TERM_SLOW)
+ZMK_COMBO(rbkt,  &kp RBKT,      RM2 RB2,     BASE, COMBO_TERM_SLOW)
+ZMK_COMBO(rbrc,  &kp RBRC,      RM3 RB3,     BASE, COMBO_TERM_SLOW)
+
+/* Horizontal combos - left hand */
+#define HRC_ESC &hml LA(LGUI) ESC
+ZMK_COMBO(esc,   HRC_ESC,       LM2 LM1,     BASE, COMBO_TERM_FAST)
+#define HRC_BSPC &hmr LS(LGUI) BSPC
+ZMK_COMBO(bspc,   HRC_BSPC,     LM3 LM2,     BASE, COMBO_TERM_FAST)
+
+/* Horizontal combos - right hand */
+#define HRC_TAB &hmr LA(LGUI) TAB
+ZMK_COMBO(tab,   HRC_TAB,       RM1 RM2,     BASE, COMBO_TERM_FAST)
+#define HRC_SQT &hmr LS(LCTRL) SQT
+ZMK_COMBO(sqt,   HRC_SQT,       RM2 RM3,     BASE, COMBO_TERM_FAST)
+
+ZMK_COMBO(bslh,   &kp BSLH,      RB3 RB4,     BASE, COMBO_TERM_SLOW)
+ZMK_COMBO(grave,  &kp GRAVE,     RT3 RT4,     BASE, COMBO_TERM_SLOW)
 
 /* Keymap */
 
@@ -97,7 +151,7 @@ ZMK_LAYER(base,
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
      &smart_shft   &kp Z         &kp X         &kp C         &kp V         &kp B            &kp N         &kp M         &kp COMMA     &kp DOT       &kp FSLH      &smart_shft
 // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                               &kp RALT      &sl SYM       &kp SPACE        &kp ENTER     &sl NUM       &kp RALT
+                                               &kp RALT      &smart_shft   tht_space        tht_enter     &kp BSPC      &kp RALT
 //                                           ╰─────────────┴─────────────┴─────────────╯  ╰─────────────┴─────────────┴─────────────╯
 )
 
@@ -161,7 +215,19 @@ ZMK_LAYER(no_hrm,
 //                                           ╰─────────────┴─────────────┴─────────────╯  ╰─────────────┴─────────────┴─────────────╯
 )
 
-ZMK_LAYER(empty,
+ZMK_LAYER(transparent,
+// ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮  ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
+     ___           ___           ___           ___           ___           ___              ___           ___           ___           ___           ___           ___
+// ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+     ___           ___           ___           ___           ___           ___              ___           ___           ___           ___           ___           ___
+// ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+     ___           ___           ___           ___           ___           ___              ___           ___           ___           ___           ___           ___
+// ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
+                                               ___           ___           ___              ___           ___           ___
+//                                           ╰─────────────┴─────────────┴─────────────╯  ╰─────────────┴─────────────┴─────────────╯
+)
+
+ZMK_LAYER(nothing,
 // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮  ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
      ___           ___           ___           ___           ___           ___              ___           ___           ___           ___           ___           ___
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
